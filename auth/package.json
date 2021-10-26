@@ -1,0 +1,44 @@
+{
+  "name": "auth",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "jest",
+    "test:ci": "npm run test -- --verbose",
+    "lint": "eslint --max-warnings 0 ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/federation": "^0.33.3",
+    "@apollo/gateway": "^0.42.3",
+    "apollo-server": "^3.4.0",
+    "graphql": "^15.6.1",
+    "ts-node": "^10.4.0"
+  },
+  "devDependencies": {
+    "@types/graphql": "^14.5.0",
+    "@types/jest": "^27.0.2",
+    "concurrently": "^6.3.0",
+    "graphql-request": "^3.6.1",
+    "jest": "^27.3.1",
+    "nodemon": "^2.0.14",
+    "eslint": "^7.25.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.3.6",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-react": "^7.26.1",
+    "typescript": "^4.4.4",
+    "@typescript-eslint/eslint-plugin": "^4.32.0",
+    "@typescript-eslint/parser": "^4.32.0",
+    "ts-jest": "^27.0.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raghavanfsd/ecomm-graphql-microservices.git"
+  },
+  "homepage": "https://github.com/raghavanfsd/ecomm-graphql-microservices#readme"
+}
