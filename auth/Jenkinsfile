@@ -35,6 +35,18 @@ pipeline {
                 }
             }
 
+            stage('Deplyoing to Kubernetes cluster') {
+                steps {
+                    script {
+                        sh "pwd"
+                        dir('infra/k8s') {
+                          sh "kubectl apply -f auth-deploy.yaml"
+                        }
+                        sh "pwd"
+                    }
+                }
+            }
+
             stage('Cleaning Up') {
                 steps{
                   sh "docker rmi --force $registry:$BUILD_NUMBER"
