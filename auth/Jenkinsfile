@@ -38,11 +38,15 @@ pipeline {
             stage('Deplyoing to Kubernetes cluster') {
                 steps {
                     script {
-                        sh "pwd"
-                        dir('infra/k8s') {
-                          sh "kubectl apply -f auth-deploy.yaml"
+                        withKubeConfig(credentialsId: 'kubeconfig') {
+                            withCredentials(bindings: [usernamePassword(credentialsId: registryCredential, usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                                sh 'pwd'
+                                dir('infra/k8s') {
+                                    sh 'kubectl rollout restart deployment auth-deploy'
+                                }
+                                sh 'pwd'
+                            }
                         }
-                        sh "pwd"
                     }
                 }
             }

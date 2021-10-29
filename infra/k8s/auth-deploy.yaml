@@ -15,6 +15,8 @@ spec:
       containers:
         - name: auth
           image: raghava447/ecomm-authsrv
+        imagePullSecrets:
+        - name: dockerhubcreds
 ---
 apiVersion: v1
 kind: Service
