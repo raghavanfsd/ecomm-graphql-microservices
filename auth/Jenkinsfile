@@ -1,6 +1,6 @@
 pipeline {
     environment {
-    registry = "raghava447/ecomm-authsrv"
+    registry = 'raghava447/ecomm-authsrv'
     registryCredential = 'dockerhub'
     dockerImage = ''
     }
@@ -13,14 +13,27 @@ pipeline {
                 }
             }
 
+            stage('testing the repo') {
+                steps {
+                    script {
+                        sh 'pwd'
+                        dir('auth') {
+                          sh 'npm install'
+                          sh 'npm test'
+                        }
+                        sh 'pwd'
+                    }
+                }
+            }
+
             stage('Building Docker Image') {
                 steps {
                     script {
-                        sh "pwd"
+                        sh 'pwd'
                         dir('auth') {
-                          dockerImage = docker.build registry + "latest"
+                          dockerImage = docker.build registry + ':latest'
                         }
-                        sh "pwd"
+                        sh 'pwd'
                     }
                 }
             }
@@ -53,7 +66,7 @@ pipeline {
 
             stage('Cleaning Up') {
                 steps{
-                  sh "docker rmi --force $registry:latest"
+                  sh 'docker rmi --force $registry:latest'
                 }
             }
         }
