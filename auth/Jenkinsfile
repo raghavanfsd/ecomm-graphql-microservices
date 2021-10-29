@@ -16,7 +16,7 @@ pipeline {
             stage('testing the repo') {
                 steps {
                     script {
-                        nodejs(nodeJsInstallationName: 'nodejs') {
+                        nodejs(nodeJSInstallationName: 'nodejs') {
                             sh 'pwd'
                             dir('auth') {
                                 sh 'npm install'
