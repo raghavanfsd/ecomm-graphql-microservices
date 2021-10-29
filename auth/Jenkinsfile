@@ -16,12 +16,14 @@ pipeline {
             stage('testing the repo') {
                 steps {
                     script {
-                        sh 'pwd'
-                        dir('auth') {
-                          sh 'npm install'
-                          sh 'npm test'
+                        nodejs(nodeJsInstallationName: 'nodejs') {
+                            sh 'pwd'
+                            dir('auth') {
+                                sh 'npm install'
+                                sh 'npm test'
+                            }
+                            sh 'pwd'
                         }
-                        sh 'pwd'
                     }
                 }
             }
